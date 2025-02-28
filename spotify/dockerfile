@@ -1,4 +1,4 @@
-FROM arm64v8/debian:bullseye
+FROM arm64v8/debian:bookworm
 RUN apt-get update && apt-get install -y bluetooth pulseaudio-module-bluetooth sudo expect alsa-utils curl
 RUN curl -sSL https://dtcooper.github.io/raspotify/key.asc | sudo tee /usr/share/keyrings/raspotify_key.asc  > /dev/null \
  && chmod 644 /usr/share/keyrings/raspotify_key.asc \
