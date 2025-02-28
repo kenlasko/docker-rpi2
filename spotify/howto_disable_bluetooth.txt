@@ -1,0 +1,3 @@
+sudo nano /lib/systemd/system/bluetooth.service
+
+# Change ExecStart to point to an invalid location/file
