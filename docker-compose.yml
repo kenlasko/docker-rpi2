@@ -66,8 +66,8 @@ services:
       - --entrypoints.websecure.http.tls.certResolver=letsencrypt
       - --entrypoints.websecure.http.tls.domains[0].main=*.ucdialplans.com
     environment:
-      - CLOUDFLARE_EMAIL=ken.lasko@gmail.com
-      - CLOUDFLARE_DNS_API_TOKEN=***REMOVED***
+      - CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}
+      - CLOUDFLARE_DNS_API_TOKEN=${CLOUDFLARE_DNS_API_TOKEN}
     ports:
       - "80:80"
       - "443:443"
