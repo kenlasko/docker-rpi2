@@ -1,7 +1,0 @@
-[
-  {
-    "id": "git-pull",
-    "execute-command": "ssh -o StrictHostKeyChecking=no' cd /docker && git pull && docker compose up -d",
-    "command-working-directory": "/docker"
-  }
-]
