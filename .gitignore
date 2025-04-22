@@ -1,7 +1,5 @@
 .env
-adguard/
-certs/
-netbootxyz/assets/
-netbootxyz/config/logs/
-omni/etcd/
-traefik/logs/
+adguard
+certs
+omni
+traefik
