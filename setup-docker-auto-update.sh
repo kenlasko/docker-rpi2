@@ -31,7 +31,7 @@ EOF
 chmod +x "$UPDATE_SCRIPT"
 
 echo "🛠️ Creating systemd service..."
-sudo cat > "$SERVICE_FILE" <<EOF
+sudo tee "$SERVICE_FILE" > /dev/null <<EOF
 [Unit]
 Description=Update Docker Compose on Git Pull
 Wants=network-online.target
@@ -45,7 +45,7 @@ ExecStart=$UPDATE_SCRIPT
 EOF
 
 echo "⏱️ Creating systemd timer..."
-sudo cat > "$TIMER_FILE" <<EOF
+sudo tee "$TIMER_FILE" > /dev/null <<EOF
 [Unit]
 Description=Run Docker Auto-Update every 5 minutes
 
@@ -57,6 +57,14 @@ Persistent=true
 [Install]
 WantedBy=timers.target
 EOF
+
+echo "🔄 Reloading systemd and enabling timer..."
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl enable --now docker-auto-update.timer
+
+echo "✅ Docker auto-update system is now active!"
+systemctl list-timers | grep docker-auto-update
 
 echo "🔄 Reloading systemd and enabling timer..."
 sudo systemctl daemon-reexec
