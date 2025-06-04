@@ -3,9 +3,11 @@ set -e
 cd /docker
 
 # Fetch remote changes
+echo "Fetching remote changes..."
 git fetch origin
 
 # Check if anything actually changed
+echo "Checking for changes..."
 if ! git diff --quiet HEAD origin/main; then
   echo "$(date): Changes detected, pulling and redeploying..."
   git pull origin main

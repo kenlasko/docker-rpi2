@@ -20,14 +20,16 @@ TIMER_FILE="/etc/systemd/system/docker-auto-update.timer"
 echo "📦 Creating Docker update script at $UPDATE_SCRIPT..."
 mkdir -p "$DOCKER_DIR"
 cat > "$UPDATE_SCRIPT" <<'EOF'
-_#!/bin/bash
+#!/bin/bash
 set -e
-cd "$DOCKER_DIR"
+cd /docker
 
 # Fetch remote changes
+echo "Fetching remote changes..."
 git fetch origin
 
 # Check if anything actually changed
+echo "Checking for changes..."
 if ! git diff --quiet HEAD origin/main; then
   echo "$(date): Changes detected, pulling and redeploying..."
   git pull origin main
