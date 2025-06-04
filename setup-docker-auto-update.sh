@@ -1,4 +1,14 @@
 #!/bin/bash
+
+# This script sets up a systemd service and timer on a Raspberry Pi to automatically update and redeploy
+# a Docker Compose stack located in /docker. It works by periodically checking the GitHub repository
+# for changes using `git fetch`, and if updates are found, it pulls the latest changes and runs
+# `docker compose pull` and `docker compose up -d` to apply them.
+#
+# The service runs every 5 minutes and also triggers once shortly after boot. This is ideal for environments
+# where updates are managed via automation tools like Renovate and you want the Pi to keep itself in sync.
+
+
 set -e
 
 USER=ken
