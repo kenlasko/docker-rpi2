@@ -10,7 +10,7 @@ TIMER_FILE="/etc/systemd/system/docker-auto-update.timer"
 echo "📦 Creating Docker update script at $UPDATE_SCRIPT..."
 mkdir -p "$DOCKER_DIR"
 cat > "$UPDATE_SCRIPT" <<'EOF'
-#!/bin/bash
+_#!/bin/bash
 set -e
 cd /home/pi/docker
 
@@ -31,7 +31,7 @@ EOF
 chmod +x "$UPDATE_SCRIPT"
 
 echo "🛠️ Creating systemd service..."
-cat > "$SERVICE_FILE" <<EOF
+sudo cat > "$SERVICE_FILE" <<EOF
 [Unit]
 Description=Update Docker Compose on Git Pull
 Wants=network-online.target
@@ -45,7 +45,7 @@ ExecStart=$UPDATE_SCRIPT
 EOF
 
 echo "⏱️ Creating systemd timer..."
-cat > "$TIMER_FILE" <<EOF
+sudo cat > "$TIMER_FILE" <<EOF
 [Unit]
 Description=Run Docker Auto-Update every 5 minutes
 
@@ -59,9 +59,9 @@ WantedBy=timers.target
 EOF
 
 echo "🔄 Reloading systemd and enabling timer..."
-systemctl daemon-reexec
-systemctl daemon-reload
-systemctl enable --now docker-auto-update.timer
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl enable --now docker-auto-update.timer
 
 echo "✅ Docker auto-update system is now active!"
-systemctl list-timers | grep docker-auto-update
+sudo systemctl list-timers | grep docker-auto-update
