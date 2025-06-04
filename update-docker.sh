@@ -1,4 +1,4 @@
-_#!/bin/bash
+#!/bin/bash
 set -e
 cd /docker
 
