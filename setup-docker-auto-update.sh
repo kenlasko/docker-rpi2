@@ -22,7 +22,7 @@ mkdir -p "$DOCKER_DIR"
 cat > "$UPDATE_SCRIPT" <<'EOF'
 _#!/bin/bash
 set -e
-cd /home/pi/docker
+cd "$DOCKER_DIR"
 
 # Fetch remote changes
 git fetch origin

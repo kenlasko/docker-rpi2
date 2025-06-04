@@ -1,6 +1,6 @@
 _#!/bin/bash
 set -e
-cd /home/pi/docker
+cd /docker
 
 # Fetch remote changes
 git fetch origin
