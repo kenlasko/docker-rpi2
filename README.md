@@ -10,7 +10,7 @@ This is the repo for my "backup" Raspberry Pi. It hosts several services such as
 # Docker Secrets
 I want to ensure that all secrets are properly encrypted at rest so that I can store the repo on Github. This is accomplished via a few scripts:
 - [load-sops-secrets.sh](load-sops-secrets.sh)
-- [create-sops-secret-builder.sh](create-sops-secret-builder.sh)
+- [setup-sops-secret-builder.sh](setup-sops-secret-builder.sh)
 
 Secrets are encrypted via SOPS/age into [secrets.yaml](secrets.yaml)
 
