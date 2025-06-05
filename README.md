@@ -24,7 +24,10 @@ STANDALONE_SECRET: mysecretvalue
 `STANDALONE_SECRET` will be placed in a file at `/run/secrets/STANDALONE_SECRET`
 `/docker/.env` will create a secret in a file located at `/docker/.env`
 
-[create-sops-secret-builder.sh](create-sops-secret-builder.sh) creates a series of `systemd` services that will watch for changes in `secrets.yaml` and will trigger the [load-sops-secrets.sh](load-sops-secrets.sh)
+[setup-sops-secret-builder.sh](setup-sops-secret-builder.sh) creates a series of `systemd` services that will watch for changes in `secrets.yaml` and will trigger the [load-sops-secrets.sh](load-sops-secrets.sh)
+
+# Updates
+Docker container updates are managed via [Renovate](https://github.com/renovatebot/renovate). When an update is found, Renovate updates the version number in `docker-compose.yml`. On the RPi, a custom service called `docker-auto-update` checks every 5 minutes to see if there are any repo updates. If so, it runs `git pull` and then `docker compose pull` and `docker compose up -d` to update the relevant containers.
 
 # Installing and Configuring SOPS and age
 ## Installation
@@ -75,3 +78,23 @@ sops --config .sops.yaml secrets.yaml
 cat /docker/secrets.yaml
 ```
 6. Run [create-sops-secret-builder.sh](create-sops-secret-builder.sh) to create the `systemd` services that will watch for changes in [secrets.yaml](secrets.yaml).
+
+# Troubleshooting
+## Secrets Not Loading
+- Ensure `secrets.yaml` is properly encrypted using SOPS.
+- Verify the `systemd` services are running:
+  ```bash
+  systemctl status sops-secrets.service
+  ```
+
+## Docker containers not auto-updating
+- Check the status of the auto-update service
+```
+systemctl status docker-auto-update.service
+systemctl status docker-auto-update.timer
+
+```
+- Check the logs 
+```
+journalctl -u docker-auto-update.service -f
+```
