@@ -4,8 +4,12 @@
     "config:recommended",
     ":rebaseStalePrs"
   ],
+  "pre-commit": {
+    "enabled": true
+  },
   "enabledManagers": [
-    "docker-compose"
+    "docker-compose",
+    "pre-commit"
   ],
   "hostRules": [
     {
