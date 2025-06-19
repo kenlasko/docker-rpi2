@@ -22,6 +22,18 @@ services:
       - ./adguard/work:/opt/adguardhome/work
 
 
+  github-runner:
+    container_name: github-runner
+    image: myoung34/github-runner:2.325.0
+    environment:
+      - REPO_URL=https://github.com/kenlasko/docker-rpi2
+      - RUNNER_TOKEN=${GITHUB_RUNNER_TOKEN}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /docker:/docker
+    restart: unless-stopped
+
+
   portainer-agent:
     container_name: portainer-agent
     image: portainer/agent:2.31.1
