@@ -3,3 +3,5 @@ adguard
 certs
 omni
 traefik
+github-runner/runner/data/_diag
+github-runner/runner/data/.*
