@@ -32,8 +32,8 @@ Docker container updates are managed via [Renovate](https://github.com/renovateb
 
 
 # References
-[Installing/Configuring SOPS and age](https://github.com/kenlasko/docker-rpi1/blob/main/docs/SOPS-CONFIG.md)
-[Setting up a Github Self-Hosted Runner](https://github.com/kenlasko/docker-rpi1/blob/main/docs/GITHUB-RUNNER.md)
+- [Installing/Configuring SOPS and age](https://github.com/kenlasko/docker-rpi1/blob/main/docs/SOPS-CONFIG.md)
+- [Setting up a Github Self-Hosted Runner](https://github.com/kenlasko/docker-rpi1/blob/main/docs/GITHUB-RUNNER.md)
 
 # Related Repositories
 Links to my other repositories mentioned or used in this repo:
