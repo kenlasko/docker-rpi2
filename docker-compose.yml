@@ -118,7 +118,7 @@ services:
       # middleware redirect
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     extra_hosts: 
-      - host.docker.internal:172.18.0.1
+      - host.docker.internal:172.20.0.1
     networks:
       - ipv6
 
@@ -130,8 +130,8 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.18.0.0/24
-          gateway: 172.18.0.1
+        - subnet: 172.20.0.0/24
+          gateway: 172.20.0.1
 
 volumes:
   fifo:
