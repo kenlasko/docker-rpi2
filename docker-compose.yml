@@ -123,28 +123,15 @@ services:
       - ipv6
 
 
-  # watchtower:
-  #   container_name: watchtower
-  #   image: containrrr/watchtower:armhf-latest
-  #   restart: unless-stopped
-  #   volumes:
-  #   - /var/run/docker.sock:/var/run/docker.sock
-  #   command: --schedule "0 0 */2 * * *" --cleanup
-  #   networks:
-  #   - ipv6
-
-
 networks:
   ipv6:
-    enable_ipv6: true
+    enable_ipv6: false
     driver: bridge
     ipam:
       driver: default
       config:
         - subnet: 172.18.0.0/24
           gateway: 172.18.0.1
-        - subnet: fe80::/64
-          gateway: fe80::1
 
 volumes:
   fifo:
