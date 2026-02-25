@@ -62,13 +62,13 @@ services:
 # For Spotify Player to work via Docker, BT must be disabled on host
 # For disabling Bluetooth on RPi2 for Spotify Docker container:
 # sudo killall -9 bluetoothd && sudo systemctl disable bluetooth.service && sudo systemctl disable bluetooth.target
-  spotify-player:
-    container_name: spotify-player
-    image: registry.ucdialplans.com/spotify-player:latest
-    restart: always
-    network_mode: host
-    cap_add:
-      - NET_ADMIN
+  # spotify-player:
+  #   container_name: spotify-player
+  #   image: registry.ucdialplans.com/spotify-player:latest
+  #   restart: always
+  #   network_mode: host
+  #   cap_add:
+  #     - NET_ADMIN
 
 
   traefik:
