@@ -12,7 +12,7 @@ services:
     network_mode: host
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.adguard.rule=Host(`adguard-rpi2.ucdialplans.com`)"
+      - "traefik.http.routers.adguard.rule=Host(`adguard-rpi2.laskonet.com`)"
       - "traefik.http.routers.adguard.entrypoints=websecure"
       - "traefik.http.routers.adguard.tls=true"
       - "traefik.http.routers.adguard.tls.certresolver=letsencrypt"
