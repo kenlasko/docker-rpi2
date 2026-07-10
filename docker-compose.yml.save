@@ -5,7 +5,7 @@
 
 services:
   adguard:
-    image: adguard/adguardhome:v0.107.77
+    image: adguard/adguardhome:v0.107.74
     container_name: adguard
     hostname: rpi2
     restart: unless-stopped
@@ -24,7 +24,7 @@ services:
 
   github-runner:
     container_name: github-runner
-    image: myoung34/github-runner:2.335.1
+    image: myoung34/github-runner:2.334.0
     environment:
       - REPO_URL=https://github.com/kenlasko/docker-rpi2
       - RUNNER_TOKEN=${GITHUB_RUNNER_TOKEN}
@@ -39,10 +39,8 @@ services:
 
   hawser-agent:
     container_name: hawser-agent
-    image: ghcr.io/finsys/hawser:0.2.46
+    image: ghcr.io/finsys/hawser:0.2.42
     restart: always
-    environment:
-      - TOKEN=${HAWSER_TOKEN}
     ports:
       - 2376:2376    
     volumes:
@@ -75,7 +73,7 @@ services:
 
   traefik:
     container_name: traefik
-    image: traefik:v3.7.7
+    image: traefik:v3.7.1
     restart: always
     command:
       - --entrypoints.web.address=:80
